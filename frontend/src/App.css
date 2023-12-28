@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;800&family=Unbounded:wght@300;800&display=swap");
+
+:root {
+  --primary-color: #121212;
+  --secondary-color: #f5f6fa;
+  --primary-font: Unbounded, "cursive";
+  --secondary-font: "Poppins", sans-serif;
+  /* font-family: "Poppins", ; */
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin: 0;
+  padding: 0;
+  font-family: var(--secondary-font);
+  background-color: rgb(167, 167, 167);
+  /* left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); */
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem; */
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--primary-font);
+}
+p,
+li {
+  font-family: var(--secondary-font);
+  list-style: none;
+}
+main {
+  padding: 10px;
+  max-width: 1000px;
+  margin: 0px auto;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 80px;
+}
+header a {
+  text-decoration: none;
+  color: rgb(36, 36, 36);
+}
+header a.logo {
+  font-weight: bold;
+}
+header nav {
+  display: flex;
+  gap: 15px;
+}
+
+/* POST  */
+.post {
+  display: flex;
+  gap: 20px;
+  /* background-color: var(--secondary-color); */
+  border: 0.012rem solid black;
+  border-radius: 14px;
+  margin-bottom: 35px;
+}
+.post img {
+  width: 400px;
+  height: 200px fit-content;
+  border-radius: 14px;
+}
+.post .info {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+}
+.info .author {
+  color: var(--primary-color);
+  text-decoration: none;
+  background-color: lightgrey;
+  padding: 1px 4px;
+}
+time {
+  font-size: 0.9rem;
+  color: rgb(75, 75, 75);
+}
+.summery {
+  margin: 0;
+  padding: 0;
+}
+.postText h2 {
+  font-weight: 500;
+}
+
+form.login,
+form.register {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 8px 15px;
+  border-radius: 12px;
+}
+
+input {
+  display: block;
+  margin-bottom: 5px;
+  width: 100%;
+  padding: 5px;
+  border: 2px solid #ddd;
+  background-color: #fff;
+  border-radius: 5px;
+  outline: none;
+  padding: 15px;
+}
+button {
+  width: 100%;
+  display: block;
+  background-color: #555;
+  border: 0;
+  border-radius: 5px;
+  padding: 15px;
+  color: #fff;
+  margin-top: 25px;
+}
