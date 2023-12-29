@@ -16,7 +16,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--secondary-font);
-  background-color: rgb(167, 167, 167);
+  background-color: var(--secondary-color);
   /* left: 50%;
   top: 50%;
   transform: translate(-50%, -50%); */
@@ -66,8 +66,8 @@ header nav {
   display: flex;
   gap: 20px;
   /* background-color: var(--secondary-color); */
-  border: 0.012rem solid black;
-  border-radius: 14px;
+  border: 0.1rem solid lightgrey;
+  border-radius: 8px;
   margin-bottom: 35px;
 }
 .post img {
@@ -129,4 +129,32 @@ button {
   padding: 15px;
   color: #fff;
   margin-top: 25px;
+}
+.postLogout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+.newPost {
+  border: 1px solid #121212;
+  padding: 2px 12px;
+  border-radius: 8px;
+  box-shadow: 0.125rem 0.125rem rgb(75, 75, 75);
+  outline: none;
+  
+  transition: 3ms linear;
+}
+.newPost:hover {
+  cursor: pointer;
+  transform: scale(1.09);
+  background-color: #555;
+  color: #ddd;
+  outline: none;
+}
+
+form.login h1,
+form.register h1 {
+  text-align: center;
 }

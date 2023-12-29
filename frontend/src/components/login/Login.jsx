@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Header from "../header/header";
 import { Navigate } from "react-router-dom";
+import { UserContext } from "../../userContext";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const { setUserinfo } = useContext(UserContext);
 
   const login = async (event) => {
     event.preventDefault();
@@ -20,7 +22,10 @@ const Login = () => {
 
       if (response.ok) {
         alert(`Login Successful`);
-        setRedirect(true);
+        response.json().then((userInfo) => {
+          setUserinfo(userInfo);
+          setRedirect(true);
+        });
       } else {
         alert(`Login Failed!`);
       }

@@ -8,6 +8,8 @@ const cors = require("cors");
 const userSchema = require("./src/models/user.model.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
+const util = require("util");
 const secret = "faefhafiahfugaawdajdadwdaw";
 
 // middlewares
@@ -18,6 +20,7 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(cookieParser());
 require("dotenv").config();
 
 // CONNECTION TO DB
@@ -61,28 +64,79 @@ app.post("/register", async (req, res) => {
 //login user
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
-  if (!username || !password) {
-    return res.status(400).json({ msg: "Please enter all fields" });
+
+  try {
+    if (!username || !password) {
+      return res
+        .status(400)
+        .json({ msg: "Please enter both username and password" });
+    }
+
+    const loginUser = await userSchema.findOne({ username });
+
+    if (!loginUser) {
+      return res.status(404).json({ msg: "Username not found" });
+    }
+
+    // Check password only if the user exists
+    const validPassword = await bcrypt.compare(password, loginUser.password);
+
+    if (!validPassword) {
+      return res.status(401).json({ msg: "Invalid password" });
+    }
+
+    // Login successful, generate JWT token
+    jwt.sign({ username, id: loginUser._id }, secret, {}, (err, token) => {
+      if (err) {
+        return res.status(500).json({ msg: "Error generating token" });
+      }
+
+      // Set the token as an HttpOnly cookie with a secure flag
+      res
+        .cookie("token", token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+        })
+        .json({ id: loginUser._id, username });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: "Internal Server Error" });
   }
+});
 
-  const loginUser = await userSchema.findOne({ username });
+const verifyAsync = util.promisify(jwt.verify);
 
-  if (!loginUser) {
-    return res.status(400).json({ msg: "Username not found!" });
+app.get("/profile", async (req, res) => {
+  try {
+    const { token } = req.cookies;
+
+    if (!token) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    const info = await verifyAsync(token, secret);
+
+    res.json(info);
+  } catch (err) {
+    if (err.name === "TokenExpiredError") {
+      return res.status(401).json({ error: "Token expired" });
+    }
+
+    return res.status(403).json({ error: "Forbidden" });
   }
+});
 
-  // Check password only if the user exists
-  let validPassword = bcrypt.compareSync(password, loginUser.password);
-
-  if (!validPassword) {
-    return res.status(404).json({ msg: `Password not valid!!` });
-  }
-
-  // Login successful, generate JWT token
-  jwt.sign({ username, id: loginUser._id }, secret, {}, (err, token) => {
-    if (err) throw err;
-    res.cookie(`token ${token} `).json("ok");
-  });
+app.post("/logout", (req, res) => {
+  // Clear server-side session data if applicable
+  res
+    .cookie("token", "", {
+      maxAge: 0,
+      expires: new Date(0),
+      secure: true,
+      httpOnly: true,
+    })
+    .json("ok");
 });
 
 app.listen(PORT, () => {
