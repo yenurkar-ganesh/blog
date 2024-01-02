@@ -11,6 +11,10 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const util = require("util");
 const secret = "faefhafiahfugaawdajdadwdaw";
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+const fs = require("fs");
+const blogSchema = require("./src/models/blog.model.js");
 
 // middlewares
 app.use(
@@ -127,6 +131,7 @@ app.get("/profile", async (req, res) => {
   }
 });
 
+// LOGOUT
 app.post("/logout", (req, res) => {
   // Clear server-side session data if applicable
   res
@@ -137,6 +142,31 @@ app.post("/logout", (req, res) => {
       httpOnly: true,
     })
     .json("ok");
+});
+
+// new Blog
+app.post("/post", upload.single("file"), async (req, res) => {
+  try {
+    const { originalname, path } = req.file;
+    const parts = originalname.split(".");
+    const ext = parts[parts.length - 1];
+    const newPath = path.replace();
+    fs.renameSync(path, newPath);
+
+    const { title, shortDescription, description, author } = req.body;
+    const postBlog = await blogSchema.create({
+      title,
+      shortDescription,
+      description,
+      author,
+      image: newPath,
+    });
+
+    res.json(postBlog);
+  } catch (error) {
+    console.error("Error processing file:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
 app.listen(PORT, () => {

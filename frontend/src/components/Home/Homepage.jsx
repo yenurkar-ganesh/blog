@@ -8,6 +8,8 @@ const Homepage = () => {
       <Header />
       <Post />
       <Post />
+      <Post />
+      <Post />
 
     </main>
   );

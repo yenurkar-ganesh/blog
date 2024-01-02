@@ -58,7 +58,7 @@ const Header = () => {
         {username && (
           <>
             <div className="postLogout">
-              <Link className="newPost"  to="/create">
+              <Link className="newPost" to="/create">
                 New Post
               </Link>
               <button onClick={logout}>Logout</button>

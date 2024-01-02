@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import Header from "../header/header";
 import { Navigate } from "react-router-dom";
 import { UserContext } from "../../userContext";
+import { FaBlog } from "react-icons/fa6";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -41,8 +42,10 @@ const Login = () => {
   return (
     <main>
       <Header />
-      <form onSubmit={login} className="login">
-        <h1>LogIn</h1>
+      <form onSubmit={login} className="loginForm">
+        <h1>
+          LogIn to <FaBlog />{" "}
+        </h1>
         <input
           type="text"
           placeholder="Username"

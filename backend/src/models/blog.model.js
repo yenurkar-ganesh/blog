@@ -17,15 +17,8 @@ const blogSchema = mongoose.Schema(
       required: [true, "Description field is required"],
     },
     author: {
-      type : String,
-      // id: {
-      //   type: mongoose.Types.ObjectId,
-      //   ref: "User",
-      // },
-      // username: {
-      //   type: String,
-      //   readOnly: true,
-      // },
+      type: String,
+      required: true,
     },
     image: {
       type: String,

@@ -1,5 +1,6 @@
 import Header from "../header/header";
 import { useState } from "react";
+import { FaBlog } from "react-icons/fa6";
 
 const RegisterPage = () => {
   const [username, setUsername] = useState("");
@@ -31,33 +32,49 @@ const RegisterPage = () => {
   return (
     <main>
       <Header />
-      <form onSubmit={register} className="register">
-        <h1>Register Now</h1>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(ev) => setUsername(ev.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(ev) => setPassword(ev.target.value)}
-        />
-        <button type="submit">Register</button>
-        {registrationStatus && (
-          <p
-            className={
-              registrationStatus.includes("Failed")
-                ? "error-message"
-                : "success-message"
-            }
-          >
-            {registrationStatus}
+      <div className="signUpForm">
+        <div className="signUpLogo">
+          <p className="welcome">
+            <h2>Welcome, 👋</h2>To <FaBlog style={{'height': '20px', width : '20px', marginLeft: '10px' }} />
           </p>
-        )}
-      </form>
+          <h1 className="signUp">Sign Up</h1>
+          <p className="orLogin">
+            Or
+            <p>
+              <a className="loginLink" href="/login">
+                LogIn To Your Account
+              </a>
+            </p>
+          </p>
+        </div>
+        <div className="separateLine"></div>
+        <form onSubmit={register} className="register">
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(ev) => setUsername(ev.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(ev) => setPassword(ev.target.value)}
+          />
+          <button type="submit">Register</button>
+          {registrationStatus && (
+            <p
+              className={
+                registrationStatus.includes("Failed")
+                  ? "error-message"
+                  : "success-message"
+              }
+            >
+              {registrationStatus}
+            </p>
+          )}
+        </form>
+      </div>
     </main>
   );
 };
