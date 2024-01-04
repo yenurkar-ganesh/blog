@@ -15,6 +15,7 @@ const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const fs = require("fs");
 const blogSchema = require("./src/models/blog.model.js");
+// const { default: Post } = require("../frontend/src/components/Post/post.jsx");
 
 // middlewares
 app.use(
@@ -26,6 +27,7 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 require("dotenv").config();
+app.use('/uploads', express.static(__dirname + '/uploads'))
 
 // CONNECTION TO DB
 connectToDB();
@@ -168,6 +170,18 @@ app.post("/post", upload.single("file"), async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+// GET POST
+// app.get("/blogs", async (req, res) => {
+//   try {
+//   const posts = await blogSchema.find();
+//   res.json(posts);
+// } catch (error) {
+//   // Handle errors and send an error response
+//   console.error("Error fetching posts:", error);
+//   res.status(500).json({ error: "Internal Server Error" });
+// }
+// });
 
 app.listen(PORT, () => {
   console.log(`Server is running on port http://localhost:${PORT}`);

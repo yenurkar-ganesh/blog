@@ -61,31 +61,61 @@ header nav {
 /* POST  */
 .post {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
   gap: 20px;
-  /* background-color: var(--secondary-color); */
-  border: 0.1rem solid lightgrey;
-  border-radius: 8px;
+  border-radius: 14px;
   margin-bottom: 15px;
+  width: 390px;
+  transition: all .3s ease-in-out;
+}
+.post:hover {
+  /* cursor: pointer; */
+  transform: scale(1.01);
+  /* box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px; */
+}
+/* .mainHome {
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+} */
+.blogSection {
+  display: flex;
+  width: 100%;
+  flex-direction: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 auto;
 }
 .post img {
-  width: 400px;
-  height: 200px fit-content;
-  border-radius: 14px;
+  width: 100%;
+  height: fit-content;
+  margin: 0;
+  padding: 0;
 }
 .post .info {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 5px;
   margin: 0;
-  padding: 0;
+  padding: 0
 }
 .info .author {
   color: var(--primary-color);
   text-decoration: none;
   background-color: lightgrey;
-  padding: 1px 4px;
+  margin: 0;
+}
+.authorInfo {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-self: center;
+  margin: 0;
+  padding: 0;
 }
 time {
   font-size: 0.9rem;
@@ -95,8 +125,10 @@ time {
   margin: 0;
   padding: 0;
 }
-.postText h2 {
+.postText {
   font-weight: 500;
+  margin: 0%;
+  padding: 0;
 }
 
 /* REgister  */
@@ -135,7 +167,6 @@ form.loginForm {
   padding: 16px;
   margin: 0px auto;
   box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
-
 }
 .welcome {
   display: flex;
