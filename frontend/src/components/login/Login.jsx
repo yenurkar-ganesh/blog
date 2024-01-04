@@ -40,27 +40,29 @@ const Login = () => {
   }
 
   return (
-    <main>
+    <>
       <Header />
-      <form onSubmit={login} className="loginForm">
-        <h1>
-          LogIn to <FaBlog />{" "}
-        </h1>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(ev) => setUsername(ev.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          value={password}
-          onChange={(ev) => setPassword(ev.target.value)}
-        />
-        <button type="submit">LogIn</button>
-      </form>
-    </main>
+      <main>
+        <form onSubmit={login} className="loginForm">
+          <h1>
+            LogIn to <FaBlog />{" "}
+          </h1>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(ev) => setUsername(ev.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={(ev) => setPassword(ev.target.value)}
+          />
+          <button type="submit">LogIn</button>
+        </form>
+      </main>
+    </>
   );
 };
 

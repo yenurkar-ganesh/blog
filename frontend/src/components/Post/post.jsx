@@ -9,6 +9,7 @@ export default function Post({
   image,
   author,
   createdAt,
+  _id
 }) {
   return (
     <div className="post">
@@ -24,16 +25,15 @@ export default function Post({
             <time>{format(new Date(createdAt), "MMM d, yyyy HH:mm")}</time>
           </p>
           <p style={{ margin: 0 }}>
-            {" "}
             <Link
               style={{
                 textDecoration: "none",
                 color: "gray",
                 display: "flex",
                 alignItems: "center",
-                gap: '5px'
+                gap: "5px",
               }}
-              to="/api/blogs/id"
+              to={`/api/blogs/${_id}`}
             >
               Learn More <FaAngleDoubleRight />
             </Link>

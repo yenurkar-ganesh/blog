@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "date-fns": "^3.0.6",
+    "dompurify": "^3.0.7",
     "install": "^0.13.0",
     "npm": "^10.2.5",
     "react": "^18.2.0",

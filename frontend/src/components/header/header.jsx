@@ -50,7 +50,7 @@ const Header = () => {
     <header>
       <Link to="/" className="logo">
         <h1>
-          <FaBlog /> Blog
+          <FaBlog style={{color: '#ffa351'}} />
         </h1>
       </Link>
 
@@ -58,17 +58,31 @@ const Header = () => {
         {username && (
           <>
             <div className="postLogout">
-              <Link className="newPost" to="/create">
-                New Post
+              <Link
+                className="publishBtn"
+                style={{ padding: "7px 20px", borderRadius: "5px", display: 'flex' }}
+                to="/create"
+              >
+                Create
               </Link>
-              <button onClick={logout}>Logout</button>
+              <Link
+                className="publishBtn"
+                style={{ padding: "7px 20%", borderRadius: "5px" }}
+                onClick={logout}
+              >
+                Logout
+              </Link>
             </div>
           </>
         )}
         {!username && (
           <>
-            <Link to="/login">LogIn</Link>
-            <Link to="/register">Register</Link>
+            <Link className="publishBtn" to="/login">
+              LogIn
+            </Link>
+            <Link className="publishBtn" to="/register">
+              Register
+            </Link>
           </>
         )}
       </nav>
