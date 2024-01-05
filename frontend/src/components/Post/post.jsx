@@ -19,7 +19,7 @@ export default function Post({
 
       <div className="postText">
         <div className="info">
-          <h2 style={{ margin: "0px", padding: "0px" }}>{title}</h2>
+          <h2 className="postTitle" style={{ margin: "0px", padding: "0px" }}>{title}</h2>
           <p className="authorInfo">
             <span className="author">{author}</span>
             <time>{format(new Date(createdAt), "MMM d, yyyy HH:mm")}</time>
@@ -28,7 +28,7 @@ export default function Post({
             <Link
               style={{
                 textDecoration: "none",
-                color: "gray",
+                color: "#ffa351",
                 display: "flex",
                 alignItems: "center",
                 gap: "5px",

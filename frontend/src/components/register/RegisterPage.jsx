@@ -36,16 +36,25 @@ const RegisterPage = () => {
         <div className="signUpForm">
           <div className="signUpLogo">
             <p className="welcome">
-              <h2>Welcome, 👋</h2>To{" "}
+              <h2>Welcome,👋 to</h2>
               <FaBlog
-                style={{ height: "20px", width: "20px", marginLeft: "10px" }}
+                style={{
+                  height: "20px",
+                  width: "20px",
+                  marginLeft: "10px",
+                  color: "#ffa351",
+                }}
               />
             </p>
             <h1 className="signUp">Sign Up</h1>
             <p className="orLogin">
               Or
               <p>
-                <a className="loginLink" href="/login">
+                <a
+                  className="loginLink"
+                  style={{ color: "#ffa351" }}
+                  href="/login"
+                >
                   LogIn To Your Account
                 </a>
               </p>
@@ -65,7 +74,18 @@ const RegisterPage = () => {
               value={password}
               onChange={(ev) => setPassword(ev.target.value)}
             />
-            <button type="submit">Register</button>
+
+            <button
+              className="publishBtn"
+              style={{
+                width: "100%",
+                padding: "11px 0px",
+                borderRadius: "6px",
+              }}
+              type="submit"
+            >
+              Register
+            </button>
             {registrationStatus && (
               <p
                 className={

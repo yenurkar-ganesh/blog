@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Post from "../Post/post.jsx";
 import Header from "../header/header.jsx";
 import { FaAngleDoubleRight } from "react-icons/fa";
+import { BiSolidQuoteLeft, BiSolidQuoteRight } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 const Homepage = () => {
@@ -22,10 +23,14 @@ const Homepage = () => {
     <>
       <Header />
       <div className="overlay">
-          <h1 className="overlayText">
-            "Breaking Tech Barriers, One Byte at a Time."
-          </h1>
-        </div>
+        <h1 style={{ gap: "9px" }} className="overlayText">
+          <BiSolidQuoteLeft style={{fontSize: '2rem'}} /> Breaking Tech Barriers,{" "}
+          <span style={{ color: "black" }}>
+            One Byte at a Time.
+            <BiSolidQuoteRight style={{fontSize: '2rem'}} />
+          </span>
+        </h1>
+      </div>
       <main className="mainHome">
         <section className="publishBlog">
           <h1 className="publishText">
@@ -36,7 +41,9 @@ const Homepage = () => {
             Create a unique and beautiful{" "}
             <span style={{ color: "#FFA351" }}>BLOG</span> easily.
           </p>
-          <Link className="publishBtn" to='/create'>CREATE YOUR BLOG</Link>
+          <Link className="publishBtn" to="/create">
+            CREATE YOUR BLOG
+          </Link>
         </section>
 
         <p style={{ display: "flex", alignItems: "center", gap: "4px" }}>

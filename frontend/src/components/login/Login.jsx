@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import Header from "../header/header";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { UserContext } from "../../userContext";
 import { FaBlog } from "react-icons/fa6";
 
@@ -44,7 +44,7 @@ const Login = () => {
       <Header />
       <main>
         <form onSubmit={login} className="loginForm">
-          <h1>
+          <h1 style={{ marginBottom: "2.8rem" }}>
             LogIn to <FaBlog />{" "}
           </h1>
           <input
@@ -59,7 +59,50 @@ const Login = () => {
             value={password}
             onChange={(ev) => setPassword(ev.target.value)}
           />
-          <button type="submit">LogIn</button>
+          <button
+            className="publishBtn"
+            style={{ width: "100%", padding: "11px 0px" }}
+            type="submit"
+          >
+            LogIn
+          </button>
+
+          <span
+            style={{
+              backgroundColor: "lightgray",
+              height: "1px",
+              width: "100%",
+              marginTop: "3rem",
+              marginBottom: "3rem",
+              position: " relative",
+            }}
+          >
+            <p
+              style={{
+                position: "absolute",
+                backgroundColor: '#fff',
+                padding: '2px 9px',
+                top: '-0%',
+                left: '50%',
+                transform: "translate(-50%, -100%)",
+                // bottom: 0,
+                // right: 0,
+                
+              }}
+            >
+              OR
+            </p>
+          </span>
+          <p>
+            Don't have an Account?{" "}
+            <Link
+              to={"/register"}
+              style={{ color: "#ffa351", textDecoration: "none" }}
+              href="/register"
+            >
+              Register
+            </Link>{" "}
+          </p>
         </form>
       </main>
     </>
